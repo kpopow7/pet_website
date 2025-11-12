@@ -27,7 +27,7 @@ class Pet(models.Model):
     breed = models.CharField(max_length=50, null=True)
     birthdate = models.DateField(null=True)
     on_meds = models.BooleanField(default=False)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default= lambda: CustomUser.objects.get_or_create(username='default')[0], db_index=True)
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, db_index=True)
     pet_image = ResizedImageField(default='pet_pics/pet_placeholder.jpg', upload_to='pet_pics')
 
     class Meta:
