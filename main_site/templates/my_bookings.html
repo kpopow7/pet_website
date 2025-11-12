@@ -1,0 +1,17 @@
+{% extends 'main_site/base.html' %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'my_bookings.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="book">
+        <br>
+        <div class="book_head text-center">
+            <img class="img-circle" src="/static/site_images/booking.jpg" alt="booking-icon" />
+            <h2>My Bookings</h2>
+        </div>
+    </div>
+
+{% endblock %}

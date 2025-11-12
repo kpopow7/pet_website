@@ -1,0 +1,44 @@
+  /* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+  
+.navbar-brand {
+  font-size: 24px;
+  color: white;
+  font-family: "Lucida Handwriting";
+  padding-left: 30px;
+  text-align: center;
+}
+.user {
+  color: white;
+}
+  
+.name {
+  color: blue;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #fa9461;
+  color: rgb(6, 6, 6);
+  padding: 15px;
+}
+
+.sidenav {
+  padding-top: 20px;
+  background-color: darkgray;
+  height: 100%
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+

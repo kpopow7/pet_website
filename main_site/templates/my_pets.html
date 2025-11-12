@@ -1,0 +1,45 @@
+{% extends 'main_site/base.html' %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'main_site/my_pets.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container pet_page">
+        <div class="pet_head row">
+            <!--<div class="col-md-2 col1"></div>-->
+            <div class="col-md-12 border-bottom border-dark text-center col2">
+                <br>
+                <div>
+                    <img class="img-circle" src="{% static 'main_site/site_images/pets.jpg' %}" alt="pet_icon"/>
+                </div>                
+                <h2>My Pets</h2>
+                <div class="new">
+                    <a href="{% url 'new_pet' %}">Create New Pet</a>
+                </div>          
+                
+                <div class="pet_list">
+                    {% for pet in pets %}
+                    <div class="media-conent-section pet">
+                        <div class="pet-name">{{ pet.name }}</div>
+                        <a class="pet-update" href="{% url 'pet_update' pet.id %}">                    
+                        <img class="img-rounded pet-pic" src="{{ MEDIA_URL }}{{ pet.pet_image }}" />
+                        </a>
+                        <div class="media-body pet-breed">
+                            <div>
+                                <small class="text-muted">{{ pet.breed }}</small>                                
+                            </div>                            
+                        </div>
+                    </div>                    
+                    {% endfor %}
+                    <div>
+                        <p>To update a pet's details click on the image</p>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-2 col3"></div>-->
+        </div>
+    </div>
+
+{% endblock %}

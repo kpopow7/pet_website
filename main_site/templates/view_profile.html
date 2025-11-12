@@ -1,0 +1,55 @@
+{% extends "main_site/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'view_profile.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}  
+
+    <div class="prof_head">
+        {% if user.profile %}
+        <div class="row prof">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="content-section">
+                    <div class="media text-center">
+                        <br>
+                        <img class="img-circle account-img" src="{{ user.profile.prof_pic.url }}" alt="{{user.username}}" accept=".jpg, .jpeg, .png" />
+                        <div class="media-body">
+                            <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
+                            <p class="text-secondary">{{ user.email }}</p>
+                        </div><br><br>
+                        <div>
+                            <strong>Username:</strong> <span>{{ user.username }}</span>
+                        </div><br>
+                        <div>
+                            <strong>Phone Number:</strong> <span>{{ user.phone_number }}</span>
+                        </div><br>
+                        <div>
+                            <strong>Street Address:</strong> <span>{{ user.profile.street }}</span>
+                        </div><br>
+                        <div>
+                            <strong>City:</strong> <span>{{ user.profile.city }}</span>
+                        </div><br>
+                        <div>
+                            <strong>State:</strong> <span>{{ user.profile.state }}</span>
+                        </div><br>
+                        <div>
+                            <strong>Zip:</strong> <span>{{ user.profile.zip }}</span>
+                        </div><br><br>
+                        <div>
+                            <a href="/my_profile/update" class="btn btn-primary" role="button">Update</a>
+                        </div>
+                    </div>                   
+                </div>
+            <div class="col-md-2"></div>
+        </div><br><br>  
+        {% endif %}       
+        
+    </div>      
+    
+
+{% endblock %}

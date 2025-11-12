@@ -1,0 +1,25 @@
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: auto;
+}
+  
+  /* Set gray background color and 100% height */
+  .petOfMonth {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+
+  .petOfMonth h3 {
+    font-family: "Papyrus";
+  }
+
+  .petOfMonth h2 {
+    font-family: "Trebuchet MS";
+  }
+
+  .petPic {
+    width: 50%;
+    height: 100%;
+  } 
+
+  

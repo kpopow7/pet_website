@@ -1,0 +1,23 @@
+.container {
+    background-color: antiquewhite;
+}
+
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.image-item {
+    flex: 1;
+    max-width: 30%;
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+.photo-head {
+    margin-bottom: 30px;
+}

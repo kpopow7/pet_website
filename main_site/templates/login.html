@@ -1,0 +1,76 @@
+{% extends "main_site/base.html" %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block head %}
+<!--<link href="{static 'login.css' %}" rel="stylesheet">-->
+{% endblock %}
+
+{% block content %}
+
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Sign In</legend>
+                {{ form|crispy }}
+                {{ form.errors }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need an account? <a class="ml-2" href="{% url 'register_view' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+
+<!--
+<div class="main">
+    <div class="mb-3 first">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <label for="loginEmail" class="form-label">Username</label>
+                <input type="email" class="form-control" id="loginEmail">
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div><br>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div><br>
+    <div class="mb-3" form-check>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <input type="checkbox" class="form-check-input" id="check1">
+                <label class="form-check-label" for="check1">Remember Me</label>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-md-5"></div>
+    </div><br><br>
+    <div class="container-fluid text-center">
+        <p>Don't have an account yet?</p><a href="{% url 'register_view' %}"> Register Here!</a>
+    </div><br><br><br>
+
+    -->
+
+{% endblock %}

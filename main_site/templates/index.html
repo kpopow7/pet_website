@@ -1,0 +1,28 @@
+{% extends "main_site/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link href="{% static 'index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-6">               
+
+            </div>
+        </div>   
+        <div class="col-sm-4 petOfMonth text-center">
+            <h3>Picture of the Month</h3>
+            <p>This month's picture of the month pick is:</p>
+            <h2>Hunter</h2>
+            <img class="petPic" src="{% static 'site_images/Hunter5.jpg' %}" alt="Hunter">
+        </div>           
+        <div class="col-sm-2 sidenav">
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&src=a3BvcG93QGFsbW9zdHBhd3JhZGlzZS5jb20&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe></iframe>
+                
+        </div>
+    </div> 
+{% endblock %}
+  
