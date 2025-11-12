@@ -43,7 +43,7 @@ class ImageListView(LoginRequiredMixin, ListView):
 
 
 @login_required(login_url='/login/')
-@user_passes_test(lambda u: u.is_authenticated)
+#@user_passes_test(lambda u: u.is_authenticated)
 def my_profile(request):
     if request.method == 'POST':
         u_form = CustomUserChangeForm(request.POST, instance=request.user)
@@ -66,7 +66,7 @@ def my_profile(request):
     return render(request, 'main_site/my_profile.html', context)
 
 @login_required(login_url='/login/')
-@user_passes_test(lambda u: u.is_authenticated)
+#@user_passes_test(lambda u: u.is_authenticated)
 def my_pets(request):
     return render(request, 'main_site/my_pets.html')
 
@@ -75,7 +75,7 @@ def my_bookings(request):
     return render(request, 'main_site/my_bookings.html')
 
 @login_required(login_url='/login/')
-@user_passes_test(lambda u: u.is_authenticated)
+#@user_passes_test(lambda u: u.is_authenticated)
 def image_upload_view(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -88,7 +88,7 @@ def image_upload_view(request):
         return render(request, 'main_site/photo_gallery.html', {'form': form})
 
 
-@user_passes_test(lambda u: not u.is_authenticated)
+#@user_passes_test(lambda u: not u.is_authenticated)
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -102,7 +102,7 @@ def login_view(request):
     return render(request, 'main_site/login.html')
 
 
-@user_passes_test(lambda u: not u.is_authenticated)
+#@user_passes_test(lambda u: not u.is_authenticated)
 def register_view(request):    
     if request.method == 'POST':         
         form = CustomUserCreationForm(request.POST, request.FILES)
@@ -116,7 +116,7 @@ def register_view(request):
         form = CustomUserCreationForm()    
     return render(request, 'main_site/register.html', {'form': form})
 
-@user_passes_test(lambda u: u.is_authenticated)
+#@user_passes_test(lambda u: u.is_authenticated)
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
@@ -133,16 +133,14 @@ def logout_view(request):
 #        return Pet.objects.filter(owner=self.request.user)
 
 
-@user_passes_test(lambda u: u.is_authenticated)
 class PetListView(LoginRequiredMixin, ListView):
     model = Pet
-    template_name = 'main_site/my_pets.html'
+    template_name = 'my_pets.html'
     context_object_name = 'pets'
     
     def get_queryset(self):
         return Pet.objects.select_related('owner').filter(owner=self.request.user)
     
-@user_passes_test(lambda u: u.is_authenticated)
 class PetDetailView(LoginRequiredMixin, DetailView):
     model = Pet
     template_name = 'new_pet.html'
@@ -152,7 +150,6 @@ class PetDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-@user_passes_test(lambda u: u.is_authenticated)
 class new_pet(LoginRequiredMixin, CreateView):
     model = Pet
     template_name = 'new_pet.html'
@@ -164,7 +161,6 @@ class new_pet(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'The pet was successfully created')
         return super(new_pet, self).form_valid(form)
      
-@user_passes_test(lambda u: u.is_authenticated)
 class PetUpdateView(LoginRequiredMixin, UpdateView):
     model = Pet
     template_name = 'main_site/new_pet.html'
@@ -177,7 +173,6 @@ class PetUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'The pet was successfully updated')
         return super(PetUpdateView, self).form_valid(form)
 
-@user_passes_test(lambda u: u.is_authenticated)
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
     template_name = 'main_site/my_profile.html'
@@ -189,7 +184,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'The profile was successfully updated')
         return super(ProfileUpdateView, self).form_valid(form)
 
-@user_passes_test(lambda u: u.is_authenticated)
+
 class PetDeleteView(LoginRequiredMixin, DeleteView):
     model = Pet
     template_name = 'main_site/my_pets.html'
