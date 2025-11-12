@@ -51,9 +51,9 @@ admin.site.register(Pet, PetAdmin)
 class StayAdmin(admin.ModelAdmin):
     list_select_related = ('petName',)
     list_prefetch_related = ('petName',)
-    list_display = ('petName', 'checkIn', 'checkOut')
-    list_filter = ('petName', 'checkIn', 'checkOut')
-    search_fields = ('petName__name', 'checkIn', 'checkOut')
+    list_display = ('petName', 'start_date', 'end_date')
+    list_filter = ('petName', 'start_date', 'end_date')
+    search_fields = ('petName__name', 'start_date', 'end_date')
     ordering = ('petName',)
     list_per_page = 10
 admin.site.register(Stay, StayAdmin)
@@ -71,7 +71,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_prefetch_related = ('user',)
     list_display = ('user', 'city', 'zip')
     list_filter = ('user', 'city', 'zip')
-    search_fields = ('user__username')
+    search_fields = ('user__username',)
     ordering = ('user',)
     list_per_page = 10
 admin.site.register(Profile, ProfileAdmin)
