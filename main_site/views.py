@@ -35,7 +35,7 @@ def profile_view(request):
 
 class ImageListView(LoginRequiredMixin, ListView):
     model = Photo
-    template_name = 'main_site/photo_gallery.html'
+    template_name = 'photo_gallery.html'
     context_object_name = 'images'
     
     def get_queryset(self):
@@ -63,16 +63,16 @@ def my_profile(request):
         'p_form': p_form
     }
        
-    return render(request, 'main_site/my_profile.html', context)
+    return render(request, 'my_profile.html', context)
 
 @login_required(login_url='/login/')
 #@user_passes_test(lambda u: u.is_authenticated)
 def my_pets(request):
-    return render(request, 'main_site/my_pets.html')
+    return render(request, 'my_pets.html')
 
 @login_required(login_url='/login/')
 def my_bookings(request):
-    return render(request, 'main_site/my_bookings.html')
+    return render(request, 'my_bookings.html')
 
 @login_required(login_url='/login/')
 #@user_passes_test(lambda u: u.is_authenticated)
@@ -85,7 +85,7 @@ def image_upload_view(request):
         return redirect('/photo_gallery/')
     else:
         form = ImageForm()
-        return render(request, 'main_site/photo_gallery.html', {'form': form})
+        return render(request, 'photo_gallery.html', {'form': form})
 
 
 #@user_passes_test(lambda u: not u.is_authenticated)
@@ -99,7 +99,7 @@ def login_view(request):
             return redirect('/login/')
         login(request, user)
         return redirect('/')
-    return render(request, 'main_site/login.html')
+    return render(request, 'login.html')
 
 
 #@user_passes_test(lambda u: not u.is_authenticated)
@@ -114,7 +114,7 @@ def register_view(request):
             messages.error(request, "Invalid username or password")
     else:
         form = CustomUserCreationForm()    
-    return render(request, 'main_site/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 #@user_passes_test(lambda u: u.is_authenticated)
 def logout_view(request):
@@ -122,7 +122,7 @@ def logout_view(request):
         logout(request)
         messages.success(request, 'You have been logged out')
         return redirect('/login/')
-    return render(request, 'main_site/logout.html')
+    return render(request, 'logout.html')
     
 #updating this code per cursor recommendation
 #class PetListView(ListView):
@@ -135,7 +135,7 @@ def logout_view(request):
 
 class PetListView(LoginRequiredMixin, ListView):
     model = Pet
-    template_name = 'main_site/my_pets.html'
+    template_name = 'my_pets.html'
     context_object_name = 'pets'
     
     def get_queryset(self):
@@ -143,7 +143,7 @@ class PetListView(LoginRequiredMixin, ListView):
     
 class PetDetailView(LoginRequiredMixin, DetailView):
     model = Pet
-    template_name = 'main_site/new_pet.html'
+    template_name = 'new_pet.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -152,7 +152,7 @@ class PetDetailView(LoginRequiredMixin, DetailView):
 
 class new_pet(LoginRequiredMixin, CreateView):
     model = Pet
-    template_name = 'main_site/new_pet.html'
+    template_name = 'new_pet.html'
     fields = '__all__'
     success_url = '/my_profile/'
 
@@ -163,7 +163,7 @@ class new_pet(LoginRequiredMixin, CreateView):
      
 class PetUpdateView(LoginRequiredMixin, UpdateView):
     model = Pet
-    template_name = 'main_site/new_pet.html'
+    template_name = 'new_pet.html'
     fields = ['name', 'pet_type', 'breed', 'birthdate', 'on_meds', 'pet_image']
     pk_url_kwarg = 'pk'
     success_url = '/my_pets/'
@@ -175,7 +175,7 @@ class PetUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
-    template_name = 'main_site/my_profile.html'
+    template_name = 'my_profile.html'
     fields = '__all__'
     success_url = '/my_profile/'
 
@@ -187,7 +187,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class PetDeleteView(LoginRequiredMixin, DeleteView):
     model = Pet
-    template_name = 'main_site/my_pets.html'
+    template_name = 'my_pets.html'
     success_url = '/my_pets/'
 
     def form_valid(self, form):
