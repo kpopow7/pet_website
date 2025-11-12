@@ -13,13 +13,13 @@ from django.contrib.auth.decorators import user_passes_test
 # Create your views here.
 
 def index(request):
-    return render(request, 'main_site/index.html')
+    return render(request, 'index.html')
 
 def about(request):
-    return render(request, 'main_site/about.html')
+    return render(request, 'about.html')
 
 def profile_view(request):
-    return render(request, 'main_site/view_profile.html')
+    return render(request, 'view_profile.html')
 
 #@login_required(login_url='/login')
 #def photo_gallery(request):
@@ -135,7 +135,7 @@ def logout_view(request):
 
 class PetListView(LoginRequiredMixin, ListView):
     model = Pet
-    template_name = 'my_pets.html'
+    template_name = 'main_site/my_pets.html'
     context_object_name = 'pets'
     
     def get_queryset(self):
@@ -143,7 +143,7 @@ class PetListView(LoginRequiredMixin, ListView):
     
 class PetDetailView(LoginRequiredMixin, DetailView):
     model = Pet
-    template_name = 'new_pet.html'
+    template_name = 'main_site/new_pet.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -152,7 +152,7 @@ class PetDetailView(LoginRequiredMixin, DetailView):
 
 class new_pet(LoginRequiredMixin, CreateView):
     model = Pet
-    template_name = 'new_pet.html'
+    template_name = 'main_site/new_pet.html'
     fields = '__all__'
     success_url = '/my_profile/'
 
